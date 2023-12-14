@@ -375,14 +375,19 @@ export interface ApiPlotPlot extends Schema.CollectionType {
   };
   attributes: {
     image: Attribute.Media & Attribute.Required;
+    description: Attribute.Text & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    coordinates: Attribute.String & Attribute.Required;
     user: Attribute.Relation<
       'api::plot.plot',
       'manyToOne',
       'plugin::users-permissions.user'
     >;
-    description: Attribute.Text & Attribute.Required;
-    title: Attribute.String & Attribute.Required;
-    coordinates: Attribute.String & Attribute.Required;
+    rating: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<{
+        max: 5;
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -31,6 +31,8 @@ const config = {
 
 const bootstrap = (app) => {
   console.log(app);
+  const routes = strapi.config.routes;
+  console.log(routes);
 };
 
 export default {
